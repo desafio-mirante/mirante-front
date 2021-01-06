@@ -1,0 +1,58 @@
+<form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+  <div class="p-fluid p-formgrid p-grid ">
+    <div class="p-field p-col-12 p-md-6">
+      <label for="nome">Nome</label>
+      <input id="nome" type="text" pInputText formControlName="nome" >
+    </div>
+    <div class="p-field p-col-12 p-md-6">
+      <label for="cpf">CPF</label>
+      <p-inputMask id="cpf" formControlName="cpf"  unmask=true mask="999.999.999-99"></p-inputMask>
+    </div>
+
+    <div class="p-field p-col-6 p-md-6">
+      <label for="cep">CEP</label>
+      <p-inputMask id="cep" formControlName="cep" mask="99999-999" unmask=true maxlength=8
+                   (change)="buscaCEP()"></p-inputMask>
+    </div>
+
+    <div class="p-field p-col-6 p-md-6">
+      <label for="logradouro">Logradouro</label>
+      <input id="logradouro" type="text" pInputText formControlName="logradouro">
+    </div>
+
+    <div class="p-field p-col-6 p-md-6">
+      <label for="cidade">Cidade</label>
+      <input id="cidade" type="text" pInputText formControlName="cidade">
+    </div>
+
+    <div class="p-field p-col-6 p-md-6">
+      <label for="bairro">Bairro</label>
+      <input id="bairro" type="text" pInputText formControlName="bairro">
+    </div>
+
+    <div class="p-field p-col-6 p-md-6">
+      <label for="uf">UF</label>
+      <input id="uf" type="text" pInputText formControlName="uf">
+    </div>
+
+    <div class="p-field p-col-6 p-md-6">
+      <label for="complemento">Complemento</label>
+      <input id="complemento" type="text" pInputText formControlName="complemento">
+    </div>
+  </div>
+
+  <hr>
+
+  <app-telefone-email [clientForm]="clientForm" [config]="config"></app-telefone-email>
+
+  <div class="form-group acoes">
+    <button pButton pRipple type="button" label="Resetar" class="p-button-warning" (click)="resetaForm()"></button>
+
+    <button pButton pRipple type="button"
+            label="Adicionar cliente"
+            class="p-button-success"
+            type="submit">
+    </button>
+  </div>
+
+</form>

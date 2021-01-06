@@ -1,0 +1,50 @@
+<div class="p-fluid p-formgrid p-grid ">
+  <div class="p-field p-col-6 p-md-6">
+    <div *ngFor="let telefone of telefones.controls; let i = index;">
+      <div class="tipo-telefone">
+        <div class="p-inputgroup p-field" [formGroup]="telefone">
+          <p-dropdown [options]="tiposTelefone"
+                      optionLabel="tipo"
+                      formControlName="tipoTelefone"
+                      (onChange)="mudaTipoTelefone(telefone)">
+          </p-dropdown>
+          <input id="numero" type="text"
+                 pInputText
+                 formControlName="numero"
+                 [mask]="tiposTelefone[i].valor"
+                 placeholder="Número de Telefone"/>
+
+          <button type="button"
+                  pButton pRipple icon="pi pi-times"
+                  styleClass="p-button-danger"
+                  (click)="removeTelefone(i)">
+          </button>
+        </div>
+      </div>
+
+
+    </div>
+
+    <button pButton pRipple type="button"
+            label="Adicionar telefone"
+            class="p-button-success"
+            (click)="addTelefone(null)">
+    </button>
+  </div>
+
+  <div class="p-field p-col-6 p-md-6">
+    <div *ngFor="let email of emails.controls; let i = index;">
+      <div class="p-inputgroup p-field" [formGroup]="email">
+        <input id="email" type="email" email="true" pInputText formControlName="email" placeholder="E-mail"/>
+        <button type="button" pButton pRipple icon="pi pi-times" styleClass="p-button-danger" (click)="removeEmail(i)"></button>
+      </div>
+    </div>
+
+    <button pButton pRipple type="button"
+            label="Adicionar e-mail"
+            class="p-button-success"
+            (click)="addEmail(null)">
+    </button>
+  </div>
+
+</div>
